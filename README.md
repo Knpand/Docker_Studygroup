@@ -1,1 +1,1 @@
-# AWS-Docker_studygroup
+# AWS-Docker_Studygroup
