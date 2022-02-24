@@ -22,7 +22,7 @@ services:
         container_name: database
         environment:
             MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: books_db
+            MYSQL_DATABASE: db
             MYSQL_USER: light
             MYSQL_PASSWORD: light
             TZ: 'Asia/Tokyo'
