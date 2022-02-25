@@ -7,7 +7,7 @@ from flask.cli import with_appcontext
 user_name = "light"
 password = "light"
 host = "database"  # docker-composeで定義したMySQLのサービス名
-database_name = "books_db"
+database_name = "db"
 
 def get_db():
     if 'db' not in g:
