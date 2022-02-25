@@ -18,9 +18,9 @@ def get_db():
             port=3306,
             database="db"
         )
-        g.db.row_factory = mysql.Row
+        cur = g.db.cursor()
 
-    return g.db
+    return cur
 
 
 def close_db(e=None):
