@@ -19,6 +19,7 @@ services:
             - database
     # データベース
     database:
+        build: ./database
         image: mysql:5.7
         container_name: database
         platform: linux/x86_64

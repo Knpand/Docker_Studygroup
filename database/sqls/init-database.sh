@@ -3,4 +3,4 @@
 #sleep 90s
 
 #run the setup script to create the DB and the schema in the DB
-mysql -u light -plight books_db < "/docker-entrypoint-initdb.d/001-create-tables.sql"
+mysql -u light -plight db < "/docker-entrypoint-initdb.d/schema.sql"

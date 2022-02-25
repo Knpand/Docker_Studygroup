@@ -1,5 +1,5 @@
-from mysql:5.6
+from mysql:5.7
 
-COPY init/* /docker-entrypoint-initdb.d/
+COPY sqls/* /docker-entrypoint-initdb.d/
 
 CMD ["mysqld"]

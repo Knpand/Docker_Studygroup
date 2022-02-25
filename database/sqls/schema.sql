@@ -1,17 +1,18 @@
+CREATE DATABASE IF NOT EXISTS db;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS post;
 
+
 CREATE TABLE user (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL
+  id int primary key auto_increment,
+  username TEXT not null,
+  password TEXT not null,
+  UNIQUE (username)
 );
 
-CREATE TABLE post (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  author_id INTEGER NOT NULL,
-  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  title TEXT NOT NULL,
-  body TEXT NOT NULL,
-  FOREIGN KEY (author_id) REFERENCES user (id)
-);
+-- CREATE TABLE post (
+--   id int primary key auto_increment,
+--   username varchar(30) not null,
+--   password varchar(30) not null,
+--   UNIQUE (username)
+-- );
