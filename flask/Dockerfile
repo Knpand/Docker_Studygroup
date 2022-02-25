@@ -5,5 +5,7 @@ ADD requirements.txt /flaskr
 
 WORKDIR /flaskr
 RUN pip3 install -r requirements.txt
+RUN FLASK_APP=flaskr
+RUN FLASK_ENV=development
 
-EXPOSE 5000
+EXPOSE 3000
