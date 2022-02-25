@@ -7,7 +7,7 @@ services:
         volumes:
             - ./:/app
         ports:
-            - "5000:5000"
+            - "3000:3000"
         # command: flask run --host 0.0.0.0 --port 5000
         environment:
             - FLASK_DEBUG=1
@@ -20,6 +20,7 @@ services:
     database:
         image: mysql:5.7
         container_name: database
+        platform: linux/x86_64
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: db
@@ -34,13 +35,13 @@ services:
             - 3306:3306
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
 
-    phpmyadmin:
-        container_name: test_phpmyadmin
-        image: phpmyadmin/phpmyadmin
-        environment:
-            - PMA_ARBITRARY=1
-            - PMA_HOSTS=database
-            - PMA_USER=light
-            - PMA_PASSWORD=light
-        ports:
-            - 8000:80
+    # phpmyadmin:
+    #     container_name: test_phpmyadmin
+    #     image: phpmyadmin/phpmyadmin
+    #     environment:
+    #         - PMA_ARBITRARY=1
+    #         - PMA_HOSTS=database
+    #         - PMA_USER=light
+    #         - PMA_PASSWORD=light
+    #     ports:
+    #         - 8000:80

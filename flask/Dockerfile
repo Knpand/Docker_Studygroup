@@ -1,9 +1,9 @@
 FROM python:3.7
 
-RUN mkdir /app
-ADD requirements.txt /app
+RUN mkdir /flaskr
+ADD requirements.txt /flaskr
 
-WORKDIR /app
+WORKDIR /flaskr
 RUN pip3 install -r requirements.txt
 
 EXPOSE 5000
