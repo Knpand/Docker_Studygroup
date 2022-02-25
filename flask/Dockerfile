@@ -1,11 +1,9 @@
 FROM python:3.7
 
-RUN mkdir /flaskr
-ADD requirements.txt /flaskr
+RUN mkdir /flask
+ADD requirements.txt /flask
 
-WORKDIR /flaskr
+WORKDIR /flask
 RUN pip3 install -r requirements.txt
-RUN export FLASK_APP=flaskr
-RUN export FLASK_ENV=development
 
 EXPOSE 3000
