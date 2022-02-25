@@ -12,6 +12,7 @@ services:
         environment:
             - FLASK_DEBUG=1
             - FLASK_ENV=development
+            - FLASK_APP=flaskr
         tty: true
         # privileged: true
         links:
@@ -35,13 +36,13 @@ services:
             - 3306:3306
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
 
-    # phpmyadmin:
-    #     container_name: test_phpmyadmin
-    #     image: phpmyadmin/phpmyadmin
-    #     environment:
-    #         - PMA_ARBITRARY=1
-    #         - PMA_HOSTS=database
-    #         - PMA_USER=light
-    #         - PMA_PASSWORD=light
-    #     ports:
-    #         - 8000:80
+    phpmyadmin:
+        container_name: test_phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        environment:
+            - PMA_ARBITRARY=1
+            - PMA_HOSTS=database
+            - PMA_USER=light
+            - PMA_PASSWORD=light
+        ports:
+            - 8000:80
