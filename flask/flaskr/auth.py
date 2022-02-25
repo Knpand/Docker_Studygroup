@@ -36,7 +36,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user[1]
-            return redirect(url_for('index'))
+            return redirect("https://sites.google.com/view/doshisha-isdl")
 
         flash(error)
 
@@ -70,15 +70,15 @@ def register():
 
     return render_template('auth/register.html')
 
-@bp.before_app_request
-def load_logged_in_user():
-    user_id = session.get('user_id')
+# @bp.before_app_request
+# def load_logged_in_user():
+#     user_id = session.get('user_id')
 
-    if user_id is None:
-        g.user = None
-    else:
-        get_db().execute('SELECT * FROM user WHERE id = %s', (user_id,))
-        g.user = get_db.fetchone()
+#     if user_id is None:
+#         g.user = None
+#     else:
+#         get_db().execute('SELECT * FROM user WHERE id = %s', (user_id,))
+#         g.user = get_db().fetchone()
         
 @bp.route('/logout')
 def logout():
