@@ -19,12 +19,12 @@ def login():
 
         if user is None:
             error = 'Incorrect username.'
-        elif not check_password_hash(user[2] , password):
+        elif not check_password_hash(user[1] , password):
             error = 'Incorrect password.'
 
         if error is None:
             session.clear()
-            session['user_id'] = user[1]
+            session['user_id'] = user[0]
             return redirect("https://sites.google.com/view/doshisha-isdl")
 
         flash(error)
@@ -38,12 +38,12 @@ def register():
         password = request.form['password']
         db = get_db()
         error = None
-        db.execute('SELECT id FROM user WHERE username = %s', (username,))
+        db.execute('SELECT * FROM user WHERE username = %s', (username,))
         if not username:
             error = 'Username is required.'
         elif not password:
             error = 'Password is required.'
-        
+
         elif db.fetchone() is not None:
             error = f"User {username} is already registered."
 
@@ -58,7 +58,7 @@ def register():
         flash(error)
 
     return render_template('auth/register.html')
-        
+
 @bp.route('/logout')
 def logout():
     session.clear()
