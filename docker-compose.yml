@@ -19,7 +19,7 @@ services:
             - database
     # データベース
     database:
-        build: ./database
+        # build: ./database
         image: mysql:5.7
         container_name: database
         platform: linux/x86_64
@@ -30,12 +30,9 @@ services:
             MYSQL_PASSWORD: light
             TZ: 'Asia/Tokyo'
         volumes:
-            - ./database/data:/var/lib/mysql
-            - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
             - ./database/sqls:/docker-entrypoint-initdb.d
         ports:
             - 3306:3306
-        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
 
     phpmyadmin:
         container_name: test_phpmyadmin

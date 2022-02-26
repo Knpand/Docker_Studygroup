@@ -69,16 +69,6 @@ def register():
         flash(error)
 
     return render_template('auth/register.html')
-
-# @bp.before_app_request
-# def load_logged_in_user():
-#     user_id = session.get('user_id')
-
-#     if user_id is None:
-#         g.user = None
-#     else:
-#         get_db().execute('SELECT * FROM user WHERE id = %s', (user_id,))
-#         g.user = get_db().fetchone()
         
 @bp.route('/logout')
 def logout():
