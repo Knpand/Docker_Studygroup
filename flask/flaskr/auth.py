@@ -1,21 +1,12 @@
 from random import *
-import os
-
-from flask import Flask, jsonify, make_response, render_template, request
-from flask_cors import CORS
-from flask_restful import Api, Resource
-
-import datetime
-import time
 
 import mysql.connector as mysql
 from flaskr.db import get_db
 from flask import (Blueprint, flash, g, redirect, render_template, request,
                    session, url_for)
 from werkzeug.security import check_password_hash, generate_password_hash
-bp = Blueprint('auth', __name__, url_prefix='')
+bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-@bp.route('/')
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
@@ -31,7 +22,7 @@ def login():
         print(type(password))
         if user is None:
             error = 'Incorrect username.'
-        elif not check_password_hash(user[2].decode("utf-8") , password):
+        elif not check_password_hash(user[2] , password):
             error = 'Incorrect password.'
 
         if error is None:
