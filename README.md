@@ -1,1 +1,11 @@
 # AWS-Docker_Studygroup
+## 参考サイト一覧
+- [Flaskのチュートリアル](https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/tutorial/index.html)
+  - 基本的なWebアプリはここから持ってきた
+  - ただし，参考サイトはデータベースにSQLiteを使っているので注意が必要
+  - 今回は諸事情により，データベースのプライマリキーである'id'は削除した
+- [Blueprint](https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/blueprints.html)
+  - FlaskのWebアプリを作る上で，Blueprintって呼ばれるモジュールを使ってます．それのドキュメント
+- [DockerでMySQL起動時にデータの初期化を行う](https://qiita.com/moaikids/items/f7c0db2c98425094ef10)
+  - 基本的にはこれを参考にした
+  - 参考ではDockerfileを使っているけど，今回は使わなくても問題ないんで使ってません
