@@ -16,10 +16,7 @@ def login():
         error = None
         db.execute('SELECT * FROM user WHERE username = %s', (username,))
         user = db.fetchone()
-        print(type(user[2]))
-        print((user[2]))
 
-        print(type(password))
         if user is None:
             error = 'Incorrect username.'
         elif not check_password_hash(user[2] , password):
