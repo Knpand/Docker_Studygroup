@@ -1,6 +1,5 @@
 version: "3"
 services:
-    # バックエンド
     flask:
         container_name: flask
         build: ./flask
@@ -8,18 +7,15 @@ services:
             - ./flask:/flask
         ports:
             - "3000:3000"
-        # command: flask run --host 0.0.0.0 --port 5000
         environment:
             - FLASK_DEBUG=1
             - FLASK_ENV=development
             - FLASK_APP=flaskr
         tty: true
-        # privileged: true
         links:
             - database
-    # データベース
+
     database:
-        # build: ./database
         image: mysql:5.7
         container_name: database
         platform: linux/x86_64

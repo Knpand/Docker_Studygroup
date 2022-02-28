@@ -59,7 +59,3 @@ def register():
 
     return render_template('auth/register.html')
         
-@bp.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('index'))
