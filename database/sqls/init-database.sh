@@ -1,6 +1,2 @@
-#!/usr/bin/env bash
-#wait for the MySQL Server to come up
-#sleep 90s
-
-#run the setup script to create the DB and the schema in the DB
-mysql -u light -plight books_db < "/docker-entrypoint-initdb.d/001-create-tables.sql"
+# #自動的にsqlファイルを実行させる
+# mysql -u light -plight stu_db < "/docker-entrypoint-initdb.d/createDB.sql"
