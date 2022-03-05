@@ -8,7 +8,7 @@ from flask.cli import with_appcontext
 def get_db():
     if 'db' not in g:
         g.db = mydb.connect(
-            host='localhost',
+            host='database',
             port='3306',
             user='light',
             password='light',

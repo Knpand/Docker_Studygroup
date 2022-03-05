@@ -28,8 +28,8 @@ services:
             MYSQL_PASSWORD: light
             TZ: 'Asia/Tokyo'
         volumes:
-            - ./database/data:/var/lib/mysql
-            - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
+            # - ./database/data:/var/lib/mysql
+            # - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
             - ./database/sqls:/docker-entrypoint-initdb.d
         ports:
             - 3306:3306
