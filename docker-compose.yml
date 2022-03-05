@@ -1,39 +1,45 @@
 version: "3"
+#コンテナに関する定義
 services:
     # バックエンド
     flask:
         container_name: flask
+        #ビルドするときのパス
         build: ./flask
+        #マウントする設定ファイルのパス
         volumes:
-            - ./:/app
+            - ./flask:/flask
+        #ポート番号
         ports:
-            - "5000:5000"
-        # command: flask run --host 0.0.0.0 --port 5000
+            - "5010:5010"
+        #環境変数設定
         environment:
             - FLASK_DEBUG=1
             - FLASK_ENV=development
+            - FLASK_APP=flaskr
+        #コンテナが正常終了するのを防ぐ
         tty: true
-        # privileged: true
         links:
             - database
+
     # データベース
     database:
         image: mysql:5.7
         container_name: database
+        platform: linux/x86_64
+        #環境変数設定
         environment:
             MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: books_db
+            MYSQL_DATABASE: db
             MYSQL_USER: light
             MYSQL_PASSWORD: light
             TZ: 'Asia/Tokyo'
         volumes:
-            - ./database/data:/var/lib/mysql
-            - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
             - ./database/sqls:/docker-entrypoint-initdb.d
         ports:
             - 3306:3306
-        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
 
+    #MySQLの操作や管理をWebブラウザを通して行うことができるWebアプリケーション
     phpmyadmin:
         container_name: test_phpmyadmin
         image: phpmyadmin/phpmyadmin
