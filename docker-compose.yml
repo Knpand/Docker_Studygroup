@@ -5,13 +5,14 @@ services:
         container_name: flask
         build: ./flask
         volumes:
-            - ./:/app
+            - ./flask:/flask
         ports:
             - "5000:5000"
         # command: flask run --host 0.0.0.0 --port 5000
         environment:
             - FLASK_DEBUG=1
             - FLASK_ENV=development
+            - FLASK_APP=flaskr
         tty: true
         # privileged: true
         links:
@@ -22,7 +23,7 @@ services:
         container_name: database
         environment:
             MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: books_db
+            MYSQL_DATABASE: docker_db
             MYSQL_USER: light
             MYSQL_PASSWORD: light
             TZ: 'Asia/Tokyo'
