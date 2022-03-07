@@ -2,31 +2,31 @@ version: "3"
 services:
     flask:
         container_name: flask
-        build: ./flask
+        build: *****
         volumes:
-            - ./flask:/flask
+            - *****
         ports:
-            - "3000:3000"
+            - *****
         environment:
             - FLASK_DEBUG=1
             - FLASK_ENV=development
             - FLASK_APP=flaskr
         tty: true
         links:
-            - database
+            - *****
 
     database:
         image: mysql:5.7
         container_name: database
         platform: linux/x86_64
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: db
-            MYSQL_USER: light
-            MYSQL_PASSWORD: light
+            MYSQL_ROOT_PASSWORD: *****
+            MYSQL_DATABASE: *****
+            MYSQL_USER: *****
+            MYSQL_PASSWORD: *****
             TZ: 'Asia/Tokyo'
         volumes:
-            - ./database/sqls:/docker-entrypoint-initdb.d
+            - *****:/docker-entrypoint-initdb.d
         ports:
             - 3306:3306
 
