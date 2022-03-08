@@ -47,13 +47,17 @@ def login():
         db.execute('SELECT * FROM user WHERE username = %s', (username,))
         user = db.fetchone()
 
+        # user[2] = user[2].decode('utf-8')
+        print(password)
+
         if user is None:
             error = 'Incorrect username.'
         # print(user[2])
         # pwhash = user[2]
         # print(generate_password_hash(password))
-        elif user[2] == generate_password_hash(password):
-        # if not check_password_hash(pwhash, password):
+        # elif user[2] == generate_password_hash(password):
+        # ->generateは毎回変わるっぽい
+        elif not check_password_hash(user[2].decode('utf-8'), password):
             error = 'Incorrect password.'
 
         if error is None:
@@ -64,14 +68,3 @@ def login():
         flash(error)
 
     return render_template('auth/login.html')
-
-@bp.before_app_request
-def load_logged_in_user():
-    user_id = session.get('user_id')
-
-    if user_id is None:
-        g.user = None
-    else:
-        g.user = get_db().execute(
-            'SELECT * FROM user WHERE id = %s', (user_id,)
-        ).fetchone()
